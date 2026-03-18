@@ -1,42 +1,495 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<title>DJ Redpill</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DJ Redpill | Musique, vidéos, live DJ & booking</title>
+  <meta name="description" content="Site officiel de DJ Redpill : musique, vidéos, live DJ, booking, concepts événementiels et univers club / festival." />
+  <style>
+    :root {
+      --bg: #070707;
+      --panel: #111111;
+      --panel-2: #161616;
+      --text: #f3f3f3;
+      --muted: #b7b7b7;
+      --line: rgba(255,255,255,0.08);
+      --accent: #ff214f;
+      --accent-2: #ff5d7e;
+      --max: 1120px;
+      --radius: 18px;
+      --shadow: 0 20px 60px rgba(0,0,0,0.35);
+    }
 
-<style>
-body{
-background:#000;
-color:white;
-font-family:Arial;
-display:flex;
-align-items:center;
-justify-content:center;
-height:100vh;
-margin:0;
-text-align:center;
-}
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top, rgba(255,33,79,0.14), transparent 30%),
+        linear-gradient(180deg, #090909 0%, #050505 100%);
+    }
 
-h1{
-font-size:60px;
-color:#ff0033;
-}
+    a { color: inherit; text-decoration: none; }
 
-p{
-font-size:20px;
-color:#cccccc;
-}
-</style>
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
 
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+      background: rgba(7,7,7,0.78);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 16px 0;
+    }
+
+    .brand {
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: 0.02em;
+    }
+
+    .brand span { color: var(--accent); }
+
+    .menu {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .menu a {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .menu a:hover,
+    .menu a.active { color: var(--text); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      transition: .2s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: white;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-primary:hover { transform: translateY(-1px); }
+
+    .btn-secondary {
+      border-color: var(--line);
+      background: rgba(255,255,255,0.03);
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 84px 0 54px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 8px 12px;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 0.86rem;
+      background: rgba(255,255,255,0.03);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.3rem, 5vw, 4.8rem);
+      line-height: 0.98;
+      letter-spacing: -0.03em;
+    }
+
+    h1 span { color: var(--accent); }
+
+    .lead {
+      margin: 18px 0 0;
+      max-width: 700px;
+      font-size: 1.1rem;
+      line-height: 1.65;
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      padding: 26px;
+      min-height: 360px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 30% 20%, rgba(255,33,79,0.4), transparent 28%),
+        radial-gradient(circle at 80% 70%, rgba(255,255,255,0.09), transparent 22%),
+        linear-gradient(180deg, rgba(255,255,255,0.04), transparent);
+      pointer-events: none;
+    }
+
+    .hero-card-box {
+      position: relative;
+      padding: 22px;
+      border-radius: 16px;
+      background: rgba(0,0,0,0.35);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .hero-card-title {
+      margin: 0 0 8px;
+      font-size: 1.45rem;
+      font-weight: 800;
+    }
+
+    .hero-card-text {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    section {
+      padding: 28px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: end;
+      margin-bottom: 18px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(1.6rem, 3vw, 2.5rem);
+      letter-spacing: -0.03em;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 680px;
+      line-height: 1.6;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .feature {
+      padding: 22px;
+    }
+
+    .feature h3 {
+      margin: 0 0 10px;
+      font-size: 1.1rem;
+    }
+
+    .feature p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .music-grid,
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .embed {
+      padding: 14px;
+    }
+
+    .embed-title {
+      margin: 0 0 12px;
+      font-size: 1rem;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    iframe {
+      width: 100%;
+      border: 0;
+      border-radius: 14px;
+      background: #000;
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .about-card,
+    .booking-card {
+      padding: 24px;
+    }
+
+    .about-card p,
+    .booking-card p {
+      color: var(--muted);
+      line-height: 1.7;
+      margin: 0 0 14px;
+    }
+
+    .list {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .list-item {
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--line);
+      color: var(--text);
+    }
+
+    .booking-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .footer {
+      padding: 36px 0 50px;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      margin-top: 28px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 960px) {
+      .hero-grid,
+      .about,
+      .grid-3,
+      .music-grid,
+      .video-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero { padding-top: 54px; }
+      .section-head { align-items: start; flex-direction: column; }
+    }
+  </style>
 </head>
-
 <body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand">DJ <span>REDPILL</span></div>
+      <div class="menu">
+        <a href="#music">Musique</a>
+        <a href="#videos">Vidéos</a>
+        <a href="#about">À propos</a>
+        <a href="#booking" class="btn btn-secondary">Booking</a>
+      </div>
+    </div>
+  </nav>
 
-<div>
-<h1>DJ REDPILL</h1>
-<p>Official Website</p>
-<p>Electronic • Club Music • Live DJ</p>
-</div>
+  <header class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">Official Website • DJ / Producer / Live Sets</div>
+        <h1>Un site simple, propre et <span>impactant</span>.</h1>
+        <p class="lead">
+          DJ Redpill, producteur et créateur français orienté dancefloor, club, live sets et contenus musicaux.
+          Ce site centralise la musique, les vidéos, les réseaux et les demandes de booking dans une présentation simple,
+          premium et immédiatement exploitable.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#music">Écouter</a>
+          <a class="btn btn-secondary" href="#booking">Réserver / Contacter</a>
+        </div>
+      </div>
 
+      <div class="card hero-card">
+        <div class="hero-card-box">
+          <p class="hero-card-title">DJ REDPILL</p>
+          <p class="hero-card-text">
+            Electronic • Club Music • Live DJ • Creative content • Event concepts
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <h2>Un site pensé pour convertir</h2>
+        <p>Le visiteur doit comprendre immédiatement qui vous êtes, écouter un son, regarder une vidéo et savoir comment vous contacter.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card feature">
+          <h3>Image pro</h3>
+          <p>Une base propre pour présenter DJ Redpill comme artiste, créateur de contenus et performeur live.</p>
+        </div>
+        <div class="card feature">
+          <h3>Conversion</h3>
+          <p>Des boutons clairs vers l’écoute, les vidéos et le booking pour éviter toute confusion.</p>
+        </div>
+        <div class="card feature">
+          <h3>Évolutif</h3>
+          <p>Vous pourrez ensuite ajouter clips, shorts, concepts DJ, dates, photos et prestations B2B.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="music">
+    <div class="container">
+      <div class="section-head">
+        <h2>Musique</h2>
+        <p>Intégrez ici vos titres principaux. Remplacez les liens d’exemple par vos vrais liens SoundCloud ou Spotify.</p>
+      </div>
+      <div class="music-grid">
+        <div class="card embed">
+          <p class="embed-title">SoundCloud officiel</p>
+          <iframe height="166" scrolling="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/thomas-anderson-374151204&color=%23ff214f&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"></iframe>
+        </div>
+        <div class="card embed">
+          <p class="embed-title">Vidéo mise en avant</p>
+          <iframe height="166" src="https://www.youtube.com/embed/WtqSS6GbYdo?start=0" title="YouTube video player" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="videos">
+    <div class="container">
+      <div class="section-head">
+        <h2>Vidéos</h2>
+        <p>Ajoutez vos vidéos YouTube les plus fortes : clip, live set, teaser ou short principal.</p>
+      </div>
+      <div class="video-grid">
+        <div class="card embed">
+          <p class="embed-title">Single / vidéo principale</p>
+          <iframe height="315" src="https://www.youtube.com/embed/WtqSS6GbYdo?start=0" title="YouTube video player" allowfullscreen></iframe>
+        </div>
+        <div class="card embed">
+          <p class="embed-title">Chaîne YouTube DJ Redpill</p>
+          <iframe height="315" src="https://www.youtube.com/embed/WtqSS6GbYdo" title="YouTube uploads" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container about">
+      <div class="card about-card">
+        <div class="section-head" style="margin-bottom:10px;">
+          <h2>À propos</h2>
+        </div>
+        <p>
+          DJ Redpill développe un univers orienté dancefloor, club, festival et énergie live.
+          L’objectif de ce site est simple : centraliser votre image, vos sons, vos vidéos et les demandes de collaboration.
+        </p>
+        <p>
+          Cette base convient autant à la promotion musicale qu’à la présentation de prestations DJ,
+          lives filmés, concepts événementiels et contenus réseaux.
+        </p>
+      </div>
+
+      <div class="card about-card">
+        <div class="section-head" style="margin-bottom:10px;">
+          <h2>Liens utiles</h2>
+        </div>
+        <div class="list">
+          <a class="list-item" href="https://www.youtube.com/@redpill.djprod" target="_blank">YouTube — @redpill.djprod</a>
+          <a class="list-item" href="https://soundcloud.com/thomas-anderson-374151204" target="_blank">SoundCloud officiel</a>
+          <a class="list-item" href="https://www.tiktok.com/@djredpill" target="_blank">TikTok — @djredpill</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="booking">
+    <div class="container">
+      <div class="card booking-card">
+        <div class="section-head" style="margin-bottom:10px;">
+          <h2>Booking / Contact</h2>
+          <p>Ajoutez ici votre email pro, votre téléphone ou un formulaire plus tard.</p>
+        </div>
+        <p>
+          Cette zone sert à convertir immédiatement : prestation DJ, live set, partenariat,
+          promo musicale, contenu vidéo ou concept événementiel.
+        </p>
+        <div class="booking-actions">
+          <a class="btn btn-primary" href="mailto:altero@neuf.fr">altero@neuf.fr</a>
+          <a class="btn btn-secondary" href="https://www.tiktok.com/@djredpill" target="_blank">Ouvrir TikTok</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>© DJ Redpill — Site officiel</div>
+      <div>Electronic • Club Music • Live DJ</div>
+    </div>
+  </footer>
 </body>
 </html>
