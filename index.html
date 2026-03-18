@@ -4,34 +4,36 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DJ Redpill | Musique, vidéos, live DJ & booking</title>
-  <meta name="description" content="Site officiel de DJ Redpill : musique, vidéos, live DJ, booking, concepts événementiels et univers club / festival." />
+  <meta name="description" content="Site officiel de DJ Redpill : musique, vidéos, live DJ, booking et univers club/festival." />
   <style>
     :root {
       --bg: #070707;
-      --panel: #111111;
-      --panel-2: #161616;
-      --text: #f3f3f3;
-      --muted: #b7b7b7;
-      --line: rgba(255,255,255,0.08);
-      --accent: #ff214f;
-      --accent-2: #ff5d7e;
-      --max: 1120px;
-      --radius: 18px;
-      --shadow: 0 20px 60px rgba(0,0,0,0.35);
+      --bg-2: #0d0d0f;
+      --panel: rgba(255,255,255,0.05);
+      --panel-2: rgba(255,255,255,0.08);
+      --line: rgba(255,255,255,0.09);
+      --text: #f5f5f5;
+      --muted: #b9b9c2;
+      --accent: #ff2a57;
+      --accent-2: #ff5f7d;
+      --shadow: 0 20px 60px rgba(0,0,0,.45);
+      --radius: 22px;
+      --max: 1180px;
     }
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
       color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
       background:
-        radial-gradient(circle at top, rgba(255,33,79,0.14), transparent 30%),
-        linear-gradient(180deg, #090909 0%, #050505 100%);
+        radial-gradient(circle at top center, rgba(255,42,87,.22), transparent 24%),
+        linear-gradient(180deg, #080808 0%, #050505 100%);
     }
 
     a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
 
     .container {
       width: min(var(--max), calc(100% - 32px));
@@ -41,48 +43,46 @@
     .nav {
       position: sticky;
       top: 0;
-      z-index: 10;
-      backdrop-filter: blur(10px);
-      background: rgba(7,7,7,0.78);
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: rgba(8,8,8,.78);
       border-bottom: 1px solid var(--line);
     }
 
     .nav-inner {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      gap: 20px;
+      justify-content: space-between;
+      gap: 24px;
       padding: 16px 0;
     }
 
     .brand {
+      font-size: 1.2rem;
       font-weight: 800;
-      font-size: 1.15rem;
-      letter-spacing: 0.02em;
+      letter-spacing: .02em;
     }
 
     .brand span { color: var(--accent); }
 
     .menu {
       display: flex;
-      gap: 18px;
       align-items: center;
+      gap: 18px;
       flex-wrap: wrap;
     }
 
     .menu a {
       color: var(--muted);
-      font-size: 0.95rem;
+      font-size: .96rem;
     }
 
-    .menu a:hover,
-    .menu a.active { color: var(--text); }
+    .menu a:hover { color: var(--text); }
 
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
       padding: 14px 22px;
       border-radius: 999px;
       border: 1px solid transparent;
@@ -90,17 +90,17 @@
       transition: .2s ease;
     }
 
+    .btn:hover { transform: translateY(-1px); }
+
     .btn-primary {
+      color: #fff;
       background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: white;
       box-shadow: var(--shadow);
     }
 
-    .btn-primary:hover { transform: translateY(-1px); }
-
     .btn-secondary {
       border-color: var(--line);
-      background: rgba(255,255,255,0.03);
+      background: rgba(255,255,255,.04);
       color: var(--text);
     }
 
@@ -110,7 +110,7 @@
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
+      grid-template-columns: 1.05fr .95fr;
       gap: 28px;
       align-items: center;
     }
@@ -118,173 +118,218 @@
     .eyebrow {
       display: inline-block;
       margin-bottom: 14px;
-      padding: 8px 12px;
-      border: 1px solid rgba(255,255,255,0.1);
+      padding: 8px 14px;
       border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.04);
       color: var(--muted);
-      font-size: 0.86rem;
-      background: rgba(255,255,255,0.03);
+      font-size: .87rem;
     }
 
     h1 {
       margin: 0;
-      font-size: clamp(2.3rem, 5vw, 4.8rem);
-      line-height: 0.98;
-      letter-spacing: -0.03em;
+      font-size: clamp(2.4rem, 5vw, 5.4rem);
+      line-height: .95;
+      letter-spacing: -.04em;
     }
 
-    h1 span { color: var(--accent); }
+    h1 .accent { color: var(--accent); }
 
     .lead {
       margin: 18px 0 0;
-      max-width: 700px;
-      font-size: 1.1rem;
-      line-height: 1.65;
+      max-width: 690px;
       color: var(--muted);
+      line-height: 1.7;
+      font-size: 1.08rem;
     }
 
     .hero-actions {
       display: flex;
       gap: 14px;
       flex-wrap: wrap;
-      margin-top: 28px;
+      margin-top: 30px;
     }
 
-    .card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
-
-    .hero-card {
-      padding: 26px;
-      min-height: 360px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
+    .hero-visual {
       position: relative;
+      min-height: 560px;
+      border-radius: 30px;
       overflow: hidden;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.55)),
+        url('https://images.unsplash.com/photo-1571266028243-d220c9f5d9c3?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
     }
 
-    .hero-card::before {
+    .hero-visual::after {
       content: "";
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(circle at 30% 20%, rgba(255,33,79,0.4), transparent 28%),
-        radial-gradient(circle at 80% 70%, rgba(255,255,255,0.09), transparent 22%),
-        linear-gradient(180deg, rgba(255,255,255,0.04), transparent);
-      pointer-events: none;
+        radial-gradient(circle at 25% 18%, rgba(255,42,87,.35), transparent 28%),
+        linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.62));
     }
 
-    .hero-card-box {
-      position: relative;
+    .hero-card {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      z-index: 2;
       padding: 22px;
-      border-radius: 16px;
-      background: rgba(0,0,0,0.35);
-      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(10,10,12,.58);
+      backdrop-filter: blur(8px);
     }
 
-    .hero-card-title {
+    .hero-card h3 {
       margin: 0 0 8px;
-      font-size: 1.45rem;
-      font-weight: 800;
+      font-size: 1.5rem;
     }
 
-    .hero-card-text {
+    .hero-card p {
       margin: 0;
-      color: var(--muted);
-      line-height: 1.6;
+      color: #dddddf;
+      line-height: 1.65;
     }
 
-    section {
-      padding: 28px 0;
-    }
+    section { padding: 28px 0; }
 
     .section-head {
       display: flex;
       justify-content: space-between;
-      gap: 20px;
       align-items: end;
+      gap: 20px;
       margin-bottom: 18px;
     }
 
     .section-head h2 {
       margin: 0;
-      font-size: clamp(1.6rem, 3vw, 2.5rem);
-      letter-spacing: -0.03em;
+      font-size: clamp(1.6rem, 3vw, 2.7rem);
+      letter-spacing: -.03em;
     }
 
     .section-head p {
       margin: 0;
-      color: var(--muted);
-      max-width: 680px;
-      line-height: 1.6;
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .feature {
-      padding: 22px;
-    }
-
-    .feature h3 {
-      margin: 0 0 10px;
-      font-size: 1.1rem;
-    }
-
-    .feature p {
-      margin: 0;
+      max-width: 700px;
       color: var(--muted);
       line-height: 1.65;
     }
 
+    .grid-3,
+    .services,
+    .gallery,
     .music-grid,
-    .video-grid {
+    .video-grid,
+    .about-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
       gap: 18px;
     }
 
-    .embed {
-      padding: 14px;
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .services { grid-template-columns: repeat(3, 1fr); }
+    .gallery { grid-template-columns: 1.2fr .8fr .8fr; }
+    .music-grid, .video-grid, .about-grid { grid-template-columns: repeat(2, 1fr); }
+
+    .card {
+      background: linear-gradient(180deg, var(--panel), rgba(255,255,255,.025));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .feature,
+    .service,
+    .about-card,
+    .booking-card,
+    .embed-card { padding: 22px; }
+
+    .feature h3,
+    .service h3,
+    .about-card h3 { margin: 0 0 10px; font-size: 1.12rem; }
+
+    .feature p,
+    .service p,
+    .about-card p,
+    .booking-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .service strong {
+      display: inline-block;
+      margin-top: 14px;
+      color: #fff;
+      font-size: .98rem;
+    }
+
+    .gallery-card {
+      min-height: 260px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 26px;
+      border: 1px solid var(--line);
+      background-size: cover;
+      background-position: center;
+      box-shadow: var(--shadow);
+    }
+
+    .gallery-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.54));
+    }
+
+    .gallery-card.large {
+      min-height: 540px;
+      background-image: url('https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=1400&q=80');
+    }
+
+    .gallery-card.one {
+      background-image: url('https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1200&q=80');
+    }
+
+    .gallery-card.two {
+      background-image: url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=80');
+    }
+
+    .gallery-card.three {
+      background-image: url('https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2?auto=format&fit=crop&w=1200&q=80');
+    }
+
+    .gallery-card.four {
+      background-image: url('https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?auto=format&fit=crop&w=1200&q=80');
+    }
+
+    .gallery-label {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      z-index: 2;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(0,0,0,.38);
+      border: 1px solid rgba(255,255,255,.11);
+      color: #fff;
+      font-weight: 700;
     }
 
     .embed-title {
       margin: 0 0 12px;
       font-size: 1rem;
-      color: var(--text);
       font-weight: 700;
     }
 
     iframe {
       width: 100%;
       border: 0;
-      border-radius: 14px;
+      border-radius: 16px;
       background: #000;
-    }
-
-    .about {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
-
-    .about-card,
-    .booking-card {
-      padding: 24px;
-    }
-
-    .about-card p,
-    .booking-card p {
-      color: var(--muted);
-      line-height: 1.7;
-      margin: 0 0 14px;
     }
 
     .list {
@@ -295,44 +340,47 @@
 
     .list-item {
       padding: 14px 16px;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.03);
+      border-radius: 15px;
       border: 1px solid var(--line);
-      color: var(--text);
+      background: rgba(255,255,255,.03);
+      color: #fff;
     }
 
     .booking-actions {
       display: flex;
-      flex-wrap: wrap;
       gap: 12px;
+      flex-wrap: wrap;
       margin-top: 18px;
     }
 
     .footer {
-      padding: 36px 0 50px;
-      color: var(--muted);
+      margin-top: 30px;
+      padding: 34px 0 46px;
       border-top: 1px solid var(--line);
-      margin-top: 28px;
+      color: var(--muted);
     }
 
     .footer-inner {
       display: flex;
       justify-content: space-between;
-      gap: 20px;
+      gap: 18px;
       flex-wrap: wrap;
     }
 
-    @media (max-width: 960px) {
+    @media (max-width: 980px) {
       .hero-grid,
-      .about,
       .grid-3,
+      .services,
+      .gallery,
       .music-grid,
-      .video-grid {
+      .video-grid,
+      .about-grid {
         grid-template-columns: 1fr;
       }
 
-      .hero { padding-top: 54px; }
-      .section-head { align-items: start; flex-direction: column; }
+      .hero { padding-top: 56px; }
+      .section-head { flex-direction: column; align-items: start; }
+      .hero-visual { min-height: 420px; }
     }
   </style>
 </head>
@@ -352,24 +400,24 @@
   <header class="hero">
     <div class="container hero-grid">
       <div>
-        <div class="eyebrow">Official Website • DJ / Producer / Live Sets</div>
-        <h1>Un site simple, propre et <span>impactant</span>.</h1>
+        <div class="eyebrow">Site officiel • Producteur • Live DJ • Vidéos</div>
+        <h1>DJ Redpill.<br><span class="accent">Un son. Une image. Une énergie.</span></h1>
         <p class="lead">
-          DJ Redpill, producteur et créateur français orienté dancefloor, club, live sets et contenus musicaux.
-          Ce site centralise la musique, les vidéos, les réseaux et les demandes de booking dans une présentation simple,
-          premium et immédiatement exploitable.
+          Producteur français, créateur de contenus musicaux et performer orienté club, dancefloor et live sets.
+          Ce site réunit l’essentiel : écouter un titre, voir une vidéo, découvrir l’univers visuel et réserver une prestation.
         </p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#music">Écouter</a>
+          <a class="btn btn-primary" href="#music">Écouter maintenant</a>
           <a class="btn btn-secondary" href="#booking">Réserver / Contacter</a>
         </div>
       </div>
 
-      <div class="card hero-card">
-        <div class="hero-card-box">
-          <p class="hero-card-title">DJ REDPILL</p>
-          <p class="hero-card-text">
-            Electronic • Club Music • Live DJ • Creative content • Event concepts
+      <div class="hero-visual">
+        <div class="hero-card">
+          <h3>Live energy. Club music. Visual impact.</h3>
+          <p>
+            DJ Redpill développe un univers musical et visuel pensé pour le dancefloor,
+            la vidéo courte, les live sets et les concepts événementiels à forte énergie.
           </p>
         </div>
       </div>
@@ -379,21 +427,47 @@
   <section>
     <div class="container">
       <div class="section-head">
-        <h2>Un site pensé pour convertir</h2>
-        <p>Le visiteur doit comprendre immédiatement qui vous êtes, écouter un son, regarder une vidéo et savoir comment vous contacter.</p>
+        <h2>Une vitrine claire et pro</h2>
+        <p>Le visiteur doit comprendre immédiatement l’identité, voir l’ambiance, écouter un son et savoir comment vous contacter.</p>
       </div>
       <div class="grid-3">
         <div class="card feature">
-          <h3>Image pro</h3>
-          <p>Une base propre pour présenter DJ Redpill comme artiste, créateur de contenus et performeur live.</p>
+          <h3>Image forte</h3>
+          <p>Une présentation visuelle plus crédible pour un artiste, un DJ et un créateur de contenus.</p>
         </div>
         <div class="card feature">
-          <h3>Conversion</h3>
-          <p>Des boutons clairs vers l’écoute, les vidéos et le booking pour éviter toute confusion.</p>
+          <h3>Accès direct</h3>
+          <p>Un accès simple à la musique, aux vidéos, aux réseaux et aux demandes de booking.</p>
         </div>
         <div class="card feature">
           <h3>Évolutif</h3>
-          <p>Vous pourrez ensuite ajouter clips, shorts, concepts DJ, dates, photos et prestations B2B.</p>
+          <p>Cette base peut ensuite intégrer dates, playlists, concepts DJ, shorts et prestations B2B.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <h2>Ambiance live DJ</h2>
+        <p>Des fonds visuels immersifs donnent tout de suite une vraie sensation de scène, de festival et de performance.</p>
+      </div>
+      <div class="gallery">
+        <div class="gallery-card large">
+          <div class="gallery-label">Festival energy • Crowd • Live performance</div>
+        </div>
+        <div class="gallery-card one">
+          <div class="gallery-label">Club set</div>
+        </div>
+        <div class="gallery-card two">
+          <div class="gallery-label">Stage lights</div>
+        </div>
+        <div class="gallery-card three">
+          <div class="gallery-label">Night vibes</div>
+        </div>
+        <div class="gallery-card four">
+          <div class="gallery-label">Audience impact</div>
         </div>
       </div>
     </div>
@@ -403,15 +477,15 @@
     <div class="container">
       <div class="section-head">
         <h2>Musique</h2>
-        <p>Intégrez ici vos titres principaux. Remplacez les liens d’exemple par vos vrais liens SoundCloud ou Spotify.</p>
+        <p>Placez ici les titres à pousser en priorité. Cette section doit rester simple, courte et immédiatement écoutable.</p>
       </div>
       <div class="music-grid">
-        <div class="card embed">
+        <div class="card embed-card">
           <p class="embed-title">SoundCloud officiel</p>
           <iframe height="166" scrolling="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/thomas-anderson-374151204&color=%23ff214f&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"></iframe>
         </div>
-        <div class="card embed">
-          <p class="embed-title">Vidéo mise en avant</p>
+        <div class="card embed-card">
+          <p class="embed-title">Single en avant</p>
           <iframe height="166" src="https://www.youtube.com/embed/WtqSS6GbYdo?start=0" title="YouTube video player" allowfullscreen></iframe>
         </div>
       </div>
@@ -422,41 +496,59 @@
     <div class="container">
       <div class="section-head">
         <h2>Vidéos</h2>
-        <p>Ajoutez vos vidéos YouTube les plus fortes : clip, live set, teaser ou short principal.</p>
+        <p>La vidéo est essentielle pour votre image. Mettez en avant un titre fort, puis un second contenu qui confirme votre univers.</p>
       </div>
       <div class="video-grid">
-        <div class="card embed">
-          <p class="embed-title">Single / vidéo principale</p>
+        <div class="card embed-card">
+          <p class="embed-title">Vidéo principale</p>
           <iframe height="315" src="https://www.youtube.com/embed/WtqSS6GbYdo?start=0" title="YouTube video player" allowfullscreen></iframe>
         </div>
-        <div class="card embed">
+        <div class="card embed-card">
           <p class="embed-title">Chaîne YouTube DJ Redpill</p>
-          <iframe height="315" src="https://www.youtube.com/embed/WtqSS6GbYdo" title="YouTube uploads" allowfullscreen></iframe>
+          <iframe height="315" src="https://www.youtube.com/embed/WtqSS6GbYdo" title="YouTube video player" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <h2>Ce que vous pouvez proposer</h2>
+        <p>Le site doit aussi montrer rapidement ce que vous faites, au-delà d’un simple morceau.</p>
+      </div>
+      <div class="services">
+        <div class="card service">
+          <h3>Live DJ sets</h3>
+          <p>Performances DJ filmées, ambiance festive, énergie dancefloor et contenus exploitables sur les réseaux.</p>
+          <strong>Clubs • événements • lieux privés</strong>
+        </div>
+        <div class="card service">
+          <h3>Création musicale</h3>
+          <p>Productions originales orientées club, singles, remixes, formats courts et contenus IA musicaux.</p>
+          <strong>Singles • shorts • promo</strong>
+        </div>
+        <div class="card service">
+          <h3>Concepts événementiels</h3>
+          <p>Prestation DJ, animations, concepts à impact visuel et formats pensés pour créer du flux et de la visibilité.</p>
+          <strong>B2B • activation • image de marque</strong>
         </div>
       </div>
     </div>
   </section>
 
   <section id="about">
-    <div class="container about">
+    <div class="container about-grid">
       <div class="card about-card">
-        <div class="section-head" style="margin-bottom:10px;">
-          <h2>À propos</h2>
-        </div>
+        <h3>À propos de DJ Redpill</h3>
         <p>
-          DJ Redpill développe un univers orienté dancefloor, club, festival et énergie live.
-          L’objectif de ce site est simple : centraliser votre image, vos sons, vos vidéos et les demandes de collaboration.
-        </p>
-        <p>
-          Cette base convient autant à la promotion musicale qu’à la présentation de prestations DJ,
-          lives filmés, concepts événementiels et contenus réseaux.
+          DJ Redpill développe une identité centrée sur la musique électronique orientée club,
+          la performance live, la vidéo et l’impact visuel. L’objectif n’est pas de surcharger,
+          mais de présenter un univers cohérent, moderne et immédiatement mémorisable.
         </p>
       </div>
-
       <div class="card about-card">
-        <div class="section-head" style="margin-bottom:10px;">
-          <h2>Liens utiles</h2>
-        </div>
+        <h3>Liens directs</h3>
         <div class="list">
           <a class="list-item" href="https://www.youtube.com/@redpill.djprod" target="_blank">YouTube — @redpill.djprod</a>
           <a class="list-item" href="https://soundcloud.com/thomas-anderson-374151204" target="_blank">SoundCloud officiel</a>
@@ -471,15 +563,15 @@
       <div class="card booking-card">
         <div class="section-head" style="margin-bottom:10px;">
           <h2>Booking / Contact</h2>
-          <p>Ajoutez ici votre email pro, votre téléphone ou un formulaire plus tard.</p>
+          <p>Une entrée simple pour demander une prestation, un partenariat ou une collaboration musicale.</p>
         </div>
         <p>
-          Cette zone sert à convertir immédiatement : prestation DJ, live set, partenariat,
-          promo musicale, contenu vidéo ou concept événementiel.
+          Pour toute demande de live DJ, concept événementiel, promotion musicale ou collaboration,
+          utilisez les accès ci-dessous.
         </p>
         <div class="booking-actions">
           <a class="btn btn-primary" href="mailto:altero@neuf.fr">altero@neuf.fr</a>
-          <a class="btn btn-secondary" href="https://www.tiktok.com/@djredpill" target="_blank">Ouvrir TikTok</a>
+          <a class="btn btn-secondary" href="https://www.youtube.com/@redpill.djprod" target="_blank">Voir YouTube</a>
         </div>
       </div>
     </div>
